@@ -22,6 +22,7 @@ function scene6_load()
 	shakeamount = 10
 	
 	fade = 0
+    ended = false
 	
 	playerx = playerx or 50
 	landingx = landingx or 50
@@ -103,8 +104,10 @@ function scene6_update(dt)
 			to = i
 		end
 	end
-	
+
 	if starttimer >= 15.7 and starttimer -dt < 15.7 then
+        print(string.format("SCORE:%d", math.ceil(points*scoremul)));
+        ended = true
 		staralpha = 1
 	
 		stars = {}
@@ -171,4 +174,14 @@ function scene6_draw()
 		end
 		love.graphics.setColor(255, 255, 255)
 	end
+
+    if ended and starttimer % (5/12) > (5/24) then
+        properprint("appuie sur espace pour recommencer", 15, 50, scale/4);
+    end
+end
+
+function scene6_keypressed(key, unicode)
+    if ended then
+        love.event.quit()
+    end
 end
