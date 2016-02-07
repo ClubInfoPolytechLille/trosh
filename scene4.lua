@@ -160,7 +160,7 @@ function scene4_draw()
 	
 	if starttimer > 4 and not jumped then
 		love.graphics.setColor(255, 0, 0, math.random(255))
-		properprint("jump!!", 0, 40, scale*3)
+		properprint("saute!!", 0, 40, scale*2)
 	end
 end
 

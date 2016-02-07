@@ -208,7 +208,7 @@ function scene5_draw()
 	if starttimer > 24 then
 		if math.mod(starttimer*5, 2) >= 1 then
 			love.graphics.setColor(255, 0, 0)
-			properprint("land in the target!", 0, 20, scale/1.5)
+			properprint("atteri sur la cible !", 0, 20, scale/1.5)
 			love.graphics.setColor(255, 255, 255)
 		end
 	end

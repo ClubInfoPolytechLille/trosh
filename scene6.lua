@@ -33,13 +33,13 @@ function scene6_load()
 	stars = {}
 	
 	texts = {}
-	texts[1] = "your awesome score:"
+	texts[1] = "ton super score:"
 	texts[2] = points
 	texts[3] = ""
-	texts[4] = "radical landing mul:"
+	texts[4] = "multiplicateur de cible:"
 	texts[5] = scoremul
 	texts[6] = ""
-	texts[7] = "cray total:"
+	texts[7] = "mega total:"
 	texts[8] = math.ceil(points*scoremul)
 	
 	prevt = 0

@@ -183,7 +183,7 @@ function scene1_draw()
 	
 	if starttimer > 46 then
 		love.graphics.setColor(255, 0, 0)
-		properprint("get in the rocket!!!", 10, 45, scale*0.5)
+		properprint("dans la fuse !!!", 10, 45, scale*0.5)
 	end
 	love.graphics.setColor(255, 255, 255)
 end
