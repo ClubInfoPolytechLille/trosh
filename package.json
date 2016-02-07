@@ -1,0 +1,23 @@
+{
+  "name": "trosh-scoreboard",
+  "version": "0.0.1",
+  "description": "Trosh scoreboard web app for Club Info",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clubinfopolytechlille/trosh.git"
+  },
+  "author": "ClubInfoPolytechLille",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/clubinfopolytechlille/trosh/issues"
+  },
+  "homepage": "https://github.com/clubinfopolytechlille/trosh#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
