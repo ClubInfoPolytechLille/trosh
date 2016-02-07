@@ -100,13 +100,13 @@ function menu_draw()
 		properprint("directed by maurice", 13, 40+textpos[0], scale/2)
 	end
 	if starti >= 1 then
-		properprint("use arrow keys", 25, 40+textpos[1], scale/2)
+		properprint("utilise les fleches", 11, 40+textpos[1], scale/2)
 	end
 	if starti >= 2 then
-		properprint("and any other button", 9, 40+textpos[2], scale/2)
+		properprint("et la touche espace", 12, 40+textpos[2], scale/2)
 	end
 	if starti >= 3 then
-		properprint("get ready...", 20, 40+textpos[3], scale/2)
+		properprint("pret...", 30, 40+textpos[3], scale/2)
 	end
 	if starti >= 4 then
 		properprint("3", 40, 40+textpos[4], scale*2)
@@ -118,7 +118,7 @@ function menu_draw()
 		properprint("1", 32, 40+textpos[6], scale*4)
 	end
 	if starti >= 7 then
-		properprint("go!", 10, 40+textpos[7], scale*6)
+		properprint("go !", 10, 40+textpos[7], scale*6)
 	end
 	
 	love.graphics.setColor(255, 255, 255)
