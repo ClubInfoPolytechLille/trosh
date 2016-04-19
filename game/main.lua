@@ -26,7 +26,6 @@ function love.load()
     require "socket.http"
     require "socket.url"
 	
-	love.graphics.setIcon( love.graphics.newImage("graphics/icon.png") )
 	changegamestate("menu")
 end
 

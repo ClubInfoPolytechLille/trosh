@@ -55,15 +55,26 @@ function menu_load()
 	
 	birdquad = {love.graphics.newQuad(0, 0, 29, 16, 29, 32), love.graphics.newQuad(0, 16, 29, 16, 29, 32)}
 	
-	scale = 8
-	local w, h = love.graphics.getMode()
-	if w ~= 100*scale or h ~= 80*scale then
-		love.graphics.setMode(100*scale, 80*scale, false, true, 0)
-	end
+    if arg[3] then
+        scale = arg[3]
+    else
+        scale = 8
+    end
+    if arg[4] then
+        fullscreen = true
+    else
+        fullscreen = false
+    end
+
+    if not windowSet then
+        love.graphics.setMode(100*scale, 80*scale, fullscreen, true, 0)
+        windowSet = true
+    end
 	love.graphics.setIcon( love.graphics.newImage("graphics/icon.png") )
 	
 	bgmusic = love.audio.newSource("audio/trosong.ogg")
 	bgmusic:setLooping(true)
+    bgmusic:setVolume(0)
 	lasersound = love.audio.newSource("audio/laser.wav")
 	bigexplosionsound = love.audio.newSource("audio/bigexplosion.ogg")
 	explosionsound = love.audio.newSource("audio/explosion.wav")
@@ -76,6 +87,7 @@ function menu_load()
 	credits = love.audio.newSource("audio/credits.ogg")
 	approach = love.audio.newSource("audio/approach.ogg")
 	credits:setLooping(true)
+    credits:setVolume(0)
 	
 	skipupdate = true
 	shakeamount = 0
@@ -113,7 +125,7 @@ function menu_load()
 	love.graphics.setBackgroundColor(153, 217, 234)
 	clouds = {}
 	bushes = {}
-    -- love.audio.play(bgmusic)
+    love.audio.play(bgmusic)
 	for i = 1, 5 do
 		table.insert(clouds, cloud:new(true))
 	end
