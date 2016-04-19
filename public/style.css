@@ -1,0 +1,34 @@
+body {
+    background: black;
+    color: white;
+    font-family: "GeosansLight";
+    padding: 30px;
+    overflow: hidden;
+}
+
+p {
+    font-size: 150%;
+}
+
+#logo {
+    margin-top: 50px;
+    width: 100%;
+    image-rendering: -moz-crisp-edges;
+}
+
+#tweets {
+    padding: 10px;
+}
+
+#lead {
+    font-size: 150%;
+    padding: 10px;
+}
+
+#sub {
+    min-height: 100px;
+}
+
+.tag {
+    margin-left: 50px;
+}

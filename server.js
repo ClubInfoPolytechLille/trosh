@@ -49,3 +49,12 @@ function addScore(score, name) {
     saveScores();
 }
 
+setInterval(function msg() {
+    var whole = require('fs').readFileSync('sub.txt', 'utf8');
+    console.log(whole)
+    ex = whole.split('\n');
+    id =  Math.floor((Math.random() * (ex.length - 1))); 
+    io.emit('msg', ex[id])
+    console.log('MSG', id, ex[id]);
+}, 30000);
+
