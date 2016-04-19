@@ -30,6 +30,7 @@ function scene6_load()
 	landdiff = playerx-landingx
 	
 	scoremul = round((1-math.abs(landdiff)/80)^8*4, 1) + 1
+    scoretot = math.ceil(points*scoremul)
 	
 	stars = {}
 	
@@ -41,7 +42,7 @@ function scene6_load()
 	texts[5] = scoremul
 	texts[6] = ""
 	texts[7] = "mega total:"
-	texts[8] = math.ceil(points*scoremul)
+	texts[8] = scoretot
 	
 	prevt = 0
 	
@@ -106,7 +107,7 @@ function scene6_update(dt)
 	end
 
 	if starttimer >= 15.7 and starttimer -dt < 15.7 then
-        print(string.format("SCORE:%d", math.ceil(points*scoremul)));
+        print("SCORE:" .. scoretot .. ":" .. pseudo)
         ended = true
 		staralpha = 1
 	
@@ -119,6 +120,11 @@ function scene6_update(dt)
 	for i,v in pairs(stars) do
 		v:update(dt)
 	end
+
+	if starttimer >= 20 and starttimer -dt < 20 then
+        changegamestate("menu")
+        credits:pause()
+    end
 end
 
 function scene6_draw()
@@ -175,16 +181,4 @@ function scene6_draw()
 		love.graphics.setColor(255, 255, 255)
 	end
 
-    if ended and starttimer % (5/12) > (5/24) then
-        properprint("appuie sur espace pour recommencer", 15, 50, scale/4)
-    end
-end
-
-function scene6_keypressed(key, unicode)
-    if ended then
-        credits:pause()
-        changegamestate("menu")
-        -- love.load()
-        -- love.event.quit()
-    end
 end

@@ -102,6 +102,8 @@ function menu_load()
 	reallaserdelay = 0.4
 	starttimer = 0
 
+    pseudo = ""
+
     rockets = nil
     jumped = nil
     landing = nil
@@ -111,7 +113,7 @@ function menu_load()
 	love.graphics.setBackgroundColor(153, 217, 234)
 	clouds = {}
 	bushes = {}
-	love.audio.play(bgmusic)
+    -- love.audio.play(bgmusic)
 	for i = 1, 5 do
 		table.insert(clouds, cloud:new(true))
 	end
@@ -128,7 +130,7 @@ function menu_load()
 	playerx = 10
 	--				 1    2   3    4     5     6      7
 	startactions = {2.3, 4.6, 7, 8.20, 9.20, 10.20, 11.20}
-	starti = 0
+	starti = -1
 	
 end
 
@@ -146,7 +148,7 @@ function menu_update(dt)
 	sini = math.mod(sini + dt*10, math.pi*2)
 	sini2 = math.mod(sini2 + dt*5, math.pi*2)
 	
-	if starttimer > startactions[starti+1] then
+	if starti >= 0 and starttimer > startactions[starti+1] then
 		starti = starti+1
 		if starti == 7 then
 			changegamestate("scene1")
@@ -180,7 +182,9 @@ function menu_update(dt)
 end
 
 function menu_action()
-	shootlaser()
+    if starti >= 0 then
+        shootlaser()
+    end
 end
 
 function menu_draw()
@@ -205,9 +209,14 @@ function menu_draw()
 	draw(titleimg, 50, 23, math.sin(sini)/10, (math.sin(sini2)+1)/5+0.7, (math.sin(sini2)+1)/5+0.7, 50, 13)
 	
 	love.graphics.setColor(255, 0, 0)
-	if starti >= 0 then
-		properprint("directed by maurice", 13, 40+textpos[0], scale/2)
-	end
+    if starti >= -1 then
+		properprint("tapes ton pseudo", 20, 40+textpos[0], scale/2)
+		properprint(pseudo, 20, 50+textpos[0], scale/2)
+    end
+
+	-- if starti >= 0 then
+	-- 	properprint("directed by maurice", 13, 40+textpos[0], scale/2)
+	-- end
 	if starti >= 1 then
 		properprint("utilise les fleches", 11, 40+textpos[1], scale/2)
 	end
@@ -231,4 +240,25 @@ function menu_draw()
 	end
 	
 	love.graphics.setColor(255, 255, 255)
+end
+
+function menu_keypressed(key, unicode)
+    print('key: ' .. key .. ' → ' .. unicode)
+    if starti == -1 then
+        if string.len(pseudo) < 16 then
+            if string.sub(key, 1, 2) == 'kp' then
+                key = string.sub(key, 3, 3)
+            end
+            if string.len(key) == 1 and string.find(fontglyphs, key, 1, true) then
+                pseudo = pseudo .. key
+            end
+        end
+        if key == 'backspace' then
+            pseudo = string.sub(pseudo, 1, -2)
+        end
+        if key == 'return' and string.len(pseudo) > 3 then
+            starttimer = startactions[1]
+            starti = 1
+        end
+    end
 end
