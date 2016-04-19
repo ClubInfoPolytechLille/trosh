@@ -42,7 +42,7 @@ function saveScores() {
 }
 
 function addScore(score, name) {
-    console.log("Score of %d by %s", score, name);
+    console.log("SCORE %d by %s", score, name);
     var obj = {score: score, name: name};
     scores.push(obj);
     io.emit('newScore', obj);
@@ -51,7 +51,6 @@ function addScore(score, name) {
 
 setInterval(function msg() {
     var whole = require('fs').readFileSync('sub.txt', 'utf8');
-    console.log(whole)
     ex = whole.split('\n');
     id =  Math.floor((Math.random() * (ex.length - 1))); 
     io.emit('msg', ex[id])
