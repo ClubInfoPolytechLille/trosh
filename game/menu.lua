@@ -222,7 +222,7 @@ function menu_draw()
 	
 	love.graphics.setColor(255, 0, 0)
     if starti >= -1 then
-		properprint("tapes ton pseudo", 20, 40+textpos[0], scale/2)
+		properprint("tape ton pseudo", 18, 40+textpos[0], scale/2)
 		properprint(pseudo, 20, 50+textpos[0], scale/2)
     end
 
@@ -233,7 +233,7 @@ function menu_draw()
 		properprint("utilise les fleches", 11, 40+textpos[1], scale/2)
 	end
 	if starti >= 2 then
-		properprint("et la touche espace", 12, 40+textpos[2], scale/2)
+		properprint("et une autre touche", 11, 40+textpos[2], scale/2)
 	end
 	if starti >= 3 then
 		properprint("pret...", 30, 40+textpos[3], scale/2)

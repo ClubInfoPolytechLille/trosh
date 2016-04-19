@@ -29,6 +29,9 @@ $(function() {
     });
 
     var oldScore = 0;
+    var shakeStart = 0;
+    var SHAKE_DURATION = 10
+    var SHAKE_MAX_THRESOLD = 100
 
     function redrawScores() {
         var sortable = [];
@@ -48,6 +51,7 @@ $(function() {
             if (scores[0].score > oldScore) {
                 $('#bestBlock').animateCss('rotateIn');
                 oldScore = scores[0].score;
+                shakeStart = Date.now()/1000;
             }
         }
     }
@@ -63,6 +67,13 @@ $(function() {
         rainbowColor(logo);
     }, 500);
 
+    function shake(thresold) {
+        var x = Math.round((2*Math.random()-1)*thresold);
+        var y = Math.round((2*Math.random()-1)*thresold);
+        $('body').css('transform', 'translate('+x+'px, '+y+'px)');
+
+    }
+
     (function anim() {
         var now = Date.now()/1000;
 
@@ -71,6 +82,12 @@ $(function() {
         var rot = Math.sin(now*10)/10;
         logo.css('transform', 'rotate(' + rot + 'rad) scale(' + scale + ')');
         rainbowColor($('#bestBlock .score'));
+
+        // Shake
+        if (now - shakeStart < SHAKE_DURATION) {
+            shake(Math.exp(10 * (shakeStart - now) / SHAKE_DURATION) * SHAKE_MAX_THRESOLD)
+        }
+
         requestAnimationFrame(anim);
 
     })();
