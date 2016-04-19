@@ -11,7 +11,7 @@ body {
 }
 
 #header {
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 #logo {
@@ -21,12 +21,32 @@ body {
 }
 
 #main {
-    margin-top: 20px;
+    margin-top: 30px;
     font-family: Arcadepix;
 }
 
-#scores {
-    font-size: 110%;
+#best {
+    position: relative;
+}
+
+#bestBlock {
+    position: absolute;
+    top: 150px;
+    width: 600px;
+    left: 50%;
+    margin-left: -300px;
+    text-align: center;
+    display: none;
+}
+
+#bestBlock .score {
+    color: red;
+    font-size: 500%;
+}
+#bestBlock .name {
+    font-size: 200%;
+    color: red;
+    text-transform: uppercase;
 }
 
 #scores h1 {
