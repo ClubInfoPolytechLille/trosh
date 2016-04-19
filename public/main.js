@@ -22,11 +22,13 @@ $(function() {
     function redrawScores() {
         var sortable = [];
         scores.sort(function(b, a) {return a.score - b.score})
-        var list = $('#lead ol');
+        var list = $('#scores ol');
         list.empty();
         for (i in scores) {
-            var obj = scores[i];
-            list.append($('<li>').text(obj.score + ' - ' + obj.name));
+            if (i < 15) {
+                var obj = scores[i];
+                list.append($('<li>').text(obj.score + ' - ' + obj.name));
+            }
         }
     }
 
