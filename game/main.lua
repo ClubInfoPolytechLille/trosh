@@ -23,6 +23,8 @@ function love.load()
 	require "asteroid"
 	require "bullet"
 	require "bird"
+    require "socket.http"
+    require "socket.url"
 	
 	love.graphics.setIcon( love.graphics.newImage("graphics/icon.png") )
 	changegamestate("menu")

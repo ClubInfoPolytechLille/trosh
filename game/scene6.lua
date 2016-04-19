@@ -107,7 +107,8 @@ function scene6_update(dt)
 	end
 
 	if starttimer >= 15.7 and starttimer -dt < 15.7 then
-        print("SCORE:" .. scoretot .. ":" .. pseudo)
+        print("SCORE|" .. scoretot .. "|" .. pseudo)
+        socket.http.request("http://" .. arg[2] .. "/addScore?score=" .. scoretot .. "&name=" .. socket.url.escape(pseudo))
         ended = true
 		staralpha = 1
 	
@@ -122,8 +123,8 @@ function scene6_update(dt)
 	end
 
 	if starttimer >= 20 and starttimer -dt < 20 then
-        changegamestate("menu")
         credits:pause()
+        changegamestate("menu")
     end
 end
 

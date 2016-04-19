@@ -243,7 +243,6 @@ function menu_draw()
 end
 
 function menu_keypressed(key, unicode)
-    print('key: ' .. key .. ' → ' .. unicode)
     if starti == -1 then
         if string.len(pseudo) < 16 then
             if string.sub(key, 1, 2) == 'kp' then
