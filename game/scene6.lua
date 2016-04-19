@@ -176,12 +176,15 @@ function scene6_draw()
 	end
 
     if ended and starttimer % (5/12) > (5/24) then
-        properprint("appuie sur espace pour recommencer", 15, 50, scale/4);
+        properprint("appuie sur espace pour recommencer", 15, 50, scale/4)
     end
 end
 
 function scene6_keypressed(key, unicode)
     if ended then
-        love.event.quit()
+        credits:pause()
+        changegamestate("menu")
+        -- love.load()
+        -- love.event.quit()
     end
 end

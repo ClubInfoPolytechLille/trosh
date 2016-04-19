@@ -25,108 +25,6 @@ function love.load()
 	require "bird"
 	
 	love.graphics.setIcon( love.graphics.newImage("graphics/icon.png") )
-	imagelist = {"title", "cloud1", "cloud2", "ground", "bush1", "bush2", "powerup", "rocket", "star", "asteroid-big1", "sunglasses", "awesome", "arrow", "groundwin",
-				"asteroid-big2", "asteroid-small1", "asteroid-small2", "bullet", "littleexplosion", "warning", "wheatley", "alert", "randomshit", "bird"}
-	
-	for i = 1, #imagelist do
-		_G[imagelist[i] .. "img"] = love.graphics.newImage("graphics/" .. imagelist[i] .. ".png")
-	end
-	
-	fontimage = love.graphics.newImage("graphics/font.png")
-	
-	fontglyphs = "0123456789abcdefghijklmnopqrstuvwxyz.:/,'C-_>* !{}?"
-	fontquads = {}
-	for i = 1, string.len(fontglyphs) do
-		fontquads[string.sub(fontglyphs, i, i)] = love.graphics.newQuad((i-1)*8, 0, 8, 8, 408, 8)
-	end
-	
-	playerimg = love.graphics.newImage("graphics/trosh.png")
-	playerquad = {love.graphics.newQuad(0, 0, 14, 25, 54, 25), love.graphics.newQuad(14, 0, 14, 25, 54, 25), love.graphics.newQuad(28, 0, 26, 12, 54, 25), love.graphics.newQuad(28, 12, 26, 12, 54, 25)}
-	
-	winplayerimg = love.graphics.newImage("graphics/troshwin.png")
-	winplayerquad = {}
-	for x = 1, 4 do
-		winplayerquad[x] = love.graphics.newQuad((x-1)*11, 0, 11, 26, 44, 26)
-	end
-	
-	enemyimg = love.graphics.newImage("graphics/enemy.png")
-	enemyquad = {}
-	for y = 1, 4 do
-		for x = 1, 4 do
-			enemyquad[(y-1)*4+x] = love.graphics.newQuad((x-1)*100, (y-1)*96, 100, 96, 400, 384)
-		end
-	end
-	
-	explosionimg = love.graphics.newImage("graphics/explosion.png")
-	explosionquad = {}
-	for y = 1, 5 do
-		for x = 1, 5 do
-			explosionquad[(y-1)*5+x] = love.graphics.newQuad((x-1)*66, (y-1)*81, 66, 81, 330, 405)
-		end
-	end
-	
-	bigexplosionimg = love.graphics.newImage("graphics/bigexplosion.png")
-	bigexplosionquad = {}
-	for y = 1, 5 do
-		for x = 1, 5 do
-			bigexplosionquad[(y-1)*5+x] = love.graphics.newQuad((x-1)*108, (y-1)*121, 108, 121, 540, 605)
-		end
-	end
-	
-	splatterimg = love.graphics.newImage("graphics/splatter.png")
-	splatterquad = {}
-	for x = 1, 6 do
-		splatterquad[x] = love.graphics.newQuad((x-1)*64, 0, 64, 64, 384, 64)
-	end
-	
-	birdquad = {love.graphics.newQuad(0, 0, 29, 16, 29, 32), love.graphics.newQuad(0, 16, 29, 16, 29, 32)}
-	
-	scale = 8
-	local w, h = love.graphics.getMode()
-	if w ~= 100*scale or h ~= 80*scale then
-		love.graphics.setMode(100*scale, 80*scale, false, true, 0)
-	end
-	love.graphics.setIcon( love.graphics.newImage("graphics/icon.png") )
-	
-	bgmusic = love.audio.newSource("audio/trosong.ogg")
-	bgmusic:setLooping(true)
-	lasersound = love.audio.newSource("audio/laser.wav")
-	bigexplosionsound = love.audio.newSource("audio/bigexplosion.ogg")
-	explosionsound = love.audio.newSource("audio/explosion.wav")
-	launchsound = love.audio.newSource("audio/launch.ogg")
-	gunfire = love.audio.newSource("audio/gunfire.wav")
-	space = love.audio.newSource("audio/space.ogg")
-	sunglassessound = love.audio.newSource("audio/sunglasses.ogg")
-	splat = love.audio.newSource("audio/splat.ogg")
-	ding = love.audio.newSource("audio/ding.ogg")
-	credits = love.audio.newSource("audio/credits.ogg")
-	approach = love.audio.newSource("audio/approach.ogg")
-	credits:setLooping(true)
-	
-	skipupdate = true
-	shakeamount = 0
-	shake = 0
-	fade = 0
-	playerframe = 1
-	scoreanim = 1
-	rainbowi = 0.5
-	sini = 0
-	sini2 = math.pi/2
-	scrollx = 0
-	points = 0
-	machinedelay = 0.05
-	stars = {}
-	explosions = {}
-	backgroundstripes = 10
-	sunrot = 0
-	
-	lasers = {}
-	
-	realasteroiddelay = 1
-	movement1speed = 100
-	laserdelay = 0
-	reallaserdelay = 0.4
-	starttimer = 0
 	changegamestate("menu")
 end
 
@@ -237,6 +135,7 @@ end
 
 function changegamestate(i)
 	gamestate = i
+    print("-- " .. gamestate)
 	if _G[gamestate .. "_load"] then
 		_G[gamestate .. "_load"]()
 	end
