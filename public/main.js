@@ -98,11 +98,11 @@ $(function() {
         $('#stars img').each(function(i, el) {
             var e = $(el);
             var pos = e.position()
-            if (pos.top > h) {
-                e.css('top', '0px');
+            if (pos.top < 0) {
+                e.css('top', h + 'px');
                 e.css('left', Math.floor(Math.random() * w) + 'px');
             } else {
-                e.css('top', (pos.top + 100) + 'px');
+                e.css('top', (pos.top - 100) + 'px');
             }
         });
 
