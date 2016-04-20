@@ -117,6 +117,9 @@ function love.draw()
 end
 
 function love.keypressed(key, unicode)
+    if key == 'escape' then
+        love.event.quit()
+    end
 	if _G[gamestate .. "_keypressed"] then
 		_G[gamestate .. "_keypressed"](key, unicode)
 	end
