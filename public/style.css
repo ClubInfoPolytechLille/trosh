@@ -10,6 +10,20 @@ body {
     font-size: 17pt;
 }
 
+#stars {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+#stars img {
+    position: absolute;
+    width: 100px;
+    image-rendering: -moz-crisp-edges;
+}
+
 #header {
     margin-top: 15px;
 }
@@ -66,7 +80,6 @@ body {
 
 #footer p {
     margin-top: 50px;
-    font-size: 75%;
     text-align: center;
 }
 

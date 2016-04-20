@@ -71,7 +71,13 @@ $(function() {
         var x = Math.round((2*Math.random()-1)*thresold);
         var y = Math.round((2*Math.random()-1)*thresold);
         $('body').css('transform', 'translate('+x+'px, '+y+'px)');
+    }
 
+    var h = $('#stars').height();
+    var w = $('#stars').width();
+
+    for (var i = 0; i < 10; i++) {
+        $('#stars').append($('<img>').attr('src', 'graphics/star.png').css('top', (Math.random() * h) + 'px'))
     }
 
     (function anim() {
@@ -87,6 +93,18 @@ $(function() {
         if (now - shakeStart < SHAKE_DURATION) {
             shake(Math.exp(10 * (shakeStart - now) / SHAKE_DURATION) * SHAKE_MAX_THRESOLD)
         }
+
+        // Stars
+        $('#stars img').each(function(i, el) {
+            var e = $(el);
+            var pos = e.position()
+            if (pos.top > h) {
+                e.css('top', '0px');
+                e.css('left', Math.floor(Math.random() * w) + 'px');
+            } else {
+                e.css('top', (pos.top + 100) + 'px');
+            }
+        });
 
         requestAnimationFrame(anim);
 
