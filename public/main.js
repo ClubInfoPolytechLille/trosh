@@ -39,7 +39,7 @@ $(function() {
         var list = $('#scores ol');
         list.empty();
         for (i in scores) {
-            if (i < 15) {
+            if (i < 8) {
                 var obj = scores[i];
                 list.append($('<li>').text(obj.score + ' - ' + obj.name));
             }

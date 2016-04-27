@@ -35,7 +35,6 @@ body {
 }
 
 #main {
-    margin-top: 30px;
     font-family: Arcadepix;
 }
 
@@ -45,7 +44,7 @@ body {
 
 #bestBlock {
     position: absolute;
-    top: 150px;
+    top: 50px;
     width: 600px;
     left: 50%;
     margin-left: -300px;
@@ -54,12 +53,12 @@ body {
 }
 
 #bestBlock .score {
-    color: red;
+    color: cyan;
     font-size: 500%;
 }
 #bestBlock .name {
     font-size: 200%;
-    color: red;
+    color: cyan;
     text-transform: uppercase;
 }
 
