@@ -23,8 +23,6 @@ function love.load()
 	require "asteroid"
 	require "bullet"
 	require "bird"
-    require "socket.http"
-    require "socket.url"
 	
 	changegamestate("menu")
 end

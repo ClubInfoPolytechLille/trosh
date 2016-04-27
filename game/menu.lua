@@ -74,7 +74,6 @@ function menu_load()
 	
 	bgmusic = love.audio.newSource("audio/trosong.ogg")
 	bgmusic:setLooping(true)
-    bgmusic:setVolume(0)
 	lasersound = love.audio.newSource("audio/laser.wav")
 	bigexplosionsound = love.audio.newSource("audio/bigexplosion.ogg")
 	explosionsound = love.audio.newSource("audio/explosion.wav")
@@ -87,7 +86,6 @@ function menu_load()
 	credits = love.audio.newSource("audio/credits.ogg")
 	approach = love.audio.newSource("audio/approach.ogg")
 	credits:setLooping(true)
-    credits:setVolume(0)
 	
 	skipupdate = true
 	shakeamount = 0
@@ -113,8 +111,6 @@ function menu_load()
 	laserdelay = 0
 	reallaserdelay = 0.4
 	starttimer = 0
-
-    pseudo = ""
 
     rockets = nil
     jumped = nil
@@ -142,7 +138,7 @@ function menu_load()
 	playerx = 10
 	--				 1    2   3    4     5     6      7
 	startactions = {2.3, 4.6, 7, 8.20, 9.20, 10.20, 11.20}
-	starti = -1
+	starti = 0
 	
 end
 
@@ -221,14 +217,9 @@ function menu_draw()
 	draw(titleimg, 50, 23, math.sin(sini)/10, (math.sin(sini2)+1)/5+0.7, (math.sin(sini2)+1)/5+0.7, 50, 13)
 	
 	love.graphics.setColor(255, 0, 0)
-    if starti >= -1 then
-		properprint("tape ton pseudo", 18, 40+textpos[0], scale/2)
-		properprint(pseudo, 20, 50+textpos[0], scale/2)
-    end
-
-	-- if starti >= 0 then
-	-- 	properprint("directed by maurice", 13, 40+textpos[0], scale/2)
-	-- end
+	if starti >= 0 then
+		properprint("directed by maurice", 13, 40+textpos[0], scale/2)
+	end
 	if starti >= 1 then
 		properprint("utilise les fleches", 11, 40+textpos[1], scale/2)
 	end
@@ -254,22 +245,3 @@ function menu_draw()
 	love.graphics.setColor(255, 255, 255)
 end
 
-function menu_keypressed(key, unicode)
-    if starti == -1 then
-        if string.len(pseudo) < 16 then
-            if string.sub(key, 1, 2) == 'kp' then
-                key = string.sub(key, 3, 3)
-            end
-            if string.len(key) == 1 and string.find(fontglyphs, key, 1, true) then
-                pseudo = pseudo .. key
-            end
-        end
-        if key == 'backspace' then
-            pseudo = string.sub(pseudo, 1, -2)
-        end
-        if key == 'return' and string.len(pseudo) > 3 then
-            starttimer = startactions[1]
-            starti = 1
-        end
-    end
-end

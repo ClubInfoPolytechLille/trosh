@@ -107,8 +107,6 @@ function scene6_update(dt)
 	end
 
 	if starttimer >= 15.7 and starttimer -dt < 15.7 then
-        print("SCORE|" .. scoretot .. "|" .. pseudo)
-        socket.http.request("http://" .. arg[2] .. "/addScore?score=" .. scoretot .. "&name=" .. socket.url.escape(pseudo))
         ended = true
 		staralpha = 1
 	
@@ -122,7 +120,10 @@ function scene6_update(dt)
 		v:update(dt)
 	end
 
-	if starttimer >= 20 and starttimer -dt < 20 then
+end
+
+function scene6_keypressed(key, unicode)
+    if ended then
         credits:pause()
         changegamestate("menu")
     end
@@ -181,5 +182,9 @@ function scene6_draw()
 		end
 		love.graphics.setColor(255, 255, 255)
 	end
+
+    if ended and starttimer % (5/12) > (5/24) then
+        properprint("appuie sur espace pour recommencer", 15, 50, scale/4)
+    end
 
 end
